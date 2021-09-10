@@ -21,7 +21,8 @@
 
 .panel {
     margin-left: 20px;
-    min-width: 300px;
+    padding-bottom: 20px;
+    min-width: 350px;
     min-height: 50px;
     border-radius: 16px;
     background: #f0f0f0;
@@ -127,7 +128,7 @@ body {
     background: #d7dcdf;
     outline: none;
     padding: 0;
-    margin: 0 0 0 10px;
+    margin: 0 0 5px 10px;
 }
 
 .range-slider__range::-webkit-slider-thumb {
