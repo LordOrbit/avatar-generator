@@ -22,5 +22,5 @@ function sliderBehaviour(slider) {
 
 for (const slider of sliders) {
     sliderBehaviour(slider)
-    slider.addEventListener("change", () => sliderBehaviour(slider))
+    slider.addEventListener("oninput", () => sliderBehaviour(slider))
 }
