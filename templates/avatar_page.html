@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новое изображение</title>
+    <link href="/static/css/main.css" rel="stylesheet">
+</head>
+<body>
+<h2 class="title">Генератор изображений</h2>
+<div class="settings">
+    <canvas class="block" id="image"></canvas>
+    <div class="block panel">
+        <div class="range-slider">
+            <label for="canal-h">H:</label>
+            <input class="range-slider__range" name="canal-h" type="range" value="100" min="0" max="360" id="canal-h">
+            <span class="range-slider__value">0</span>
+        </div>
+    </div>
+</div>
+<div>
+    <a><button class="bn632-hover bn24" id="download">Скачать</button></a>
+    <button class="bn632-hover bn25" id="generate">Генерировать!</button>
+</div>
+<script src="/static/js/canvas.js"></script>
+<script src="/static/js/range_slider.js"></script>
+<script src="/static/js/download.js"></script>
+</body>
+</html>
