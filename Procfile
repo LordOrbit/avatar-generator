@@ -1,1 +1,1 @@
-web: gunicorn avatar_generator.wsgi
+web: gunicorn avatar_generator/avatar_generator.wsgi
