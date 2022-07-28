@@ -9,18 +9,40 @@ function hsv2rgb(h, s, v) {
     return [f(5), f(3), f(1)];
 }
 
-function generateImage(pixelCount = 'set', margin = 'set', h = 'set', s = 'set', v = 'set', fill = 'set', checkRandom = true) {
-    if (pixelCount === 'set')
+function addToHistory() {
+    let historyBlock = document.querySelector("#history");
+    let canvas = document.querySelector("#image");
+
+    let a = document.createElement('a');
+    a.className = 'img-box';
+    a.href = canvas.toDataURL("image/png");
+    a.download = `image_${Math.trunc(Math.random() * 10000000)}.png`
+
+    let image = new Image();
+    image.src = a.href;
+    image.width = 100;
+    image.height = 100;
+
+    let div = document.createElement("div");
+    div.className = "overlay";
+
+    div.appendChild(image);
+    a.appendChild(div);
+    historyBlock.insertBefore(a, historyBlock.firstChild);
+}
+
+function generateImage(pixelCount = "set", margin = "set", h = "set", s = "set", v = "set", fill = "set", checkRandom = true) {
+    if (pixelCount === "set")
         pixelCount = +document.querySelector("#count").value
-    if (margin === 'set')
+    if (margin === "set")
         margin = +document.querySelector("#margin").value
-    if (fill === 'set')
+    if (fill === "set")
         fill = +document.querySelector("#fill").value
     fill /= 100
     const pixelSize = Math.trunc(Math.round(defaultSize / pixelCount))
     const imageSize = pixelSize * pixelCount
 
-    const canvas = document.querySelector('#image')
+    const canvas = document.querySelector("#image")
     const ctx = canvas.getContext("2d")
     canvas.height = imageSize
     canvas.width = imageSize
@@ -39,11 +61,11 @@ function generateImage(pixelCount = 'set', margin = 'set', h = 'set', s = 'set',
             sliderBehaviour(slider)
         }
     }
-    if (h === 'set')
+    if (h === "set")
         h = +document.querySelector("#canal-h").value
-    if (s === 'set')
+    if (s === "set")
         s = +document.querySelector("#canal-s").value
-    if (v === 'set')
+    if (v === "set")
         v = +document.querySelector("#canal-v").value
     const difH = +document.querySelector("#gradient-h").value
     const difS = +document.querySelector("#gradient-s").value
@@ -82,6 +104,19 @@ function generateImage(pixelCount = 'set', margin = 'set', h = 'set', s = 'set',
     }
 }
 
-window.addEventListener('load', () => generateImage())
-button = document.querySelector('#generate')
-button.addEventListener('click', () => generateImage())
+function nextImage(count = 1) {
+    for (let i = 0; i < count; i++) {
+        addToHistory();
+        generateImage();
+    }
+}
+
+function scrollToEnd(durationTime = 15000) {
+    setTimeout(() => {
+        $("html, body").animate({scrollTop: $(document).height()}, durationTime, 'linear');
+    }, 7500);
+}
+
+window.addEventListener("load", () => generateImage())
+button = document.querySelector("#generate")
+button.addEventListener("click", () => nextImage())

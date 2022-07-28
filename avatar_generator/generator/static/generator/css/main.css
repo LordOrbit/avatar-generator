@@ -20,6 +20,37 @@
     }
 }
 
+.history-block {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.img-box {
+    margin: 10px;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+}
+
+.overlay {
+    background: #ffffff;
+    height: 99.9%;
+    padding: 0 !important;
+}
+
+.img-box > .overlay > img {
+    transition: all 0.3s ease-in-out;
+}
+
+.img-box:hover > .overlay {
+    background: #000000;
+}
+
+.img-box:hover > .overlay > img {
+    opacity: 0.8;
+}
+
 .block {
     display: inline-block;
     vertical-align: top;
